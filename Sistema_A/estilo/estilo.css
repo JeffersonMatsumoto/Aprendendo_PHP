@@ -1,0 +1,18 @@
+#formulario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: double black 5px;
+    margin-top: 1%;
+    padding-bottom: 1%;
+    margin-bottom: 1%;
+}
+
+button {
+    width: 25%;
+}
+
+.form-group {
+    min-width: 50%;
+}
