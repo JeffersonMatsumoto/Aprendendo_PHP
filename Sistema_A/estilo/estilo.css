@@ -7,6 +7,7 @@
     margin-top: 1%;
     padding-bottom: 1%;
     margin-bottom: 1%;
+    overflow: hidden;
 }
 
 button {

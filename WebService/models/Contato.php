@@ -3,13 +3,13 @@
         private $conn;
         private $table = "CONTATOS";
 
-        public $id;
+        public int $id;
         public $nome;
         public $email;
         public $data_nascimento;
         public $telefone;
         public $status_integracao_b;
-        public $id_integracao_sistema_b;
+        public int $id_integracao_sistema_b;
 
         public function __construct($db) {
             $this->conn = $db;

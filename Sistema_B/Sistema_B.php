@@ -31,20 +31,30 @@
             echo "<b>Nome:</b> " .$contato->nome ."<br>";
             echo "<b>E-mail:</b> " .$contato->email ."<br>";
             echo "<b>Telefone:</b> " .$contato->telefone ."<br>";
-            echo "<b>Data de Nascimento:</b> " .$contato->data_nascimento ."<br>";
+            echo "<b>Data de Nascimento:</b> " .date('d/m/Y',strtotime($contato->data_nascimento)) ."<br>";
             echo "<hr>";
+
+            $serverName = ""; //
+            $connectionOptions = array(
+                "Database" => "SISTEMA_B",
+                "Uid" => "",
+                "PWD" => "",
+                "CharacterSet" => "UTF-8"
+            );
+
+            $conn = sqlsrv_connect($serverName, $connectionOptions);
 
             $query = "INSERT INTO CONTATOS (NOME, EMAIL, TELEFONE, DATA_NASCIMENTO, ID_SISTEMA_A) VALUES 
             ('$contato->nome', '$contato->email', '$contato->telefone', '$contato->data_nascimento', $contato->id)";
 
             $resultado = sqlsrv_query($conn, $query);
 
-            $rowsAffected = sqlsrv_rows_affected($resultado);
-            if ($resultado == FALSE or $rowsAffected == FALSE)
-                die(FormatErrors(sqlsrv_errors()));
-            echo ($rowsAffected. " linha(s) inserida(s): " . PHP_EOL);
+            // $rowsAffected = sqlsrv_rows_affected($resultado);
+            // if ($resultado == FALSE or $rowsAffected == FALSE)
+            //     die(FormatErrors(sqlsrv_errors()));
+            // echo ($rowsAffected. " linha(s) inserida(s): " . PHP_EOL);
 
-            sqlsrv_free_stmt($resultado);
+            // sqlsrv_free_stmt($resultado);
             sqlsrv_close($conn);
         }
 
